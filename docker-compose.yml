@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  app-dev:
+    image: gaia-fe
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - .:/app
+      - /app/node_modules
+      # - /app/.next
+    ports:
+      - "3000:3000"
+    container_name: gaia-fe
+  app-prod:
+    container_name: "gaia-fe-build-c"
+    image: "gaia-fe-build-i"
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - 3030:3030

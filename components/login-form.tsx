@@ -7,13 +7,13 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { PasswordInput } from "@/components/ui/password-input"
 import { PhoneInput } from "@/components/ui/phone-input"
-import { 
-  InputOTP, 
-  InputOTPGroup, 
-  InputOTPSeparator, 
-  InputOTPSlot 
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot
 } from "@/components/ui/input-otp"
-import {useForm} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { toast } from "sonner"
@@ -32,8 +32,8 @@ import Link from "next/link"
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
-  phoneNumber: z.string().min(1, "Phone number is required"),
-  otp: z.string().length(6, "OTP must be 6 digits")
+  // phoneNumber: z.string().min(1, "Phone number is required"),
+  // otp: z.string().length(6, "OTP must be 6 digits")
 })
 
 export function LoginForm({ className, ...props }: React.ComponentProps<"div">) {
@@ -43,8 +43,8 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
     defaultValues: {
       email: "",
       password: "",
-      phoneNumber: "",
-      otp: ""
+      // phoneNumber: "",
+      // otp: ""
     }
   })
 
@@ -67,8 +67,8 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
       <Card className="overflow-hidden py-0">
         <CardContent className="grid p-0 md:grid-cols-2">
           <Form {...form}>
-            <form 
-              onSubmit={form.handleSubmit(onSubmit)} 
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
               className="p-6 md:p-8 space-y-6"
             >
               <div className="flex flex-col gap-6">
@@ -86,13 +86,12 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="email" 
-                          placeholder="m@example.com" 
-                          {...field} 
+                        <Input
+                          type="email"
+                          placeholder="m@example.com"
+                          {...field}
                         />
                       </FormControl>
-                      <FormDescription>This is your email.</FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -105,26 +104,25 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                     <FormItem>
                       <div className="flex items-center">
                         <FormLabel>Password</FormLabel>
-                        <a 
-                          href="#" 
+                        <a
+                          href="#"
                           className="ml-auto text-sm underline-offset-2 hover:underline"
                         >
                           Forgot your password?
                         </a>
                       </div>
                       <FormControl>
-                        <PasswordInput 
-                          placeholder="Enter your password" 
-                          {...field} 
+                        <PasswordInput
+                          placeholder="Enter your password"
+                          {...field}
                         />
                       </FormControl>
-                      <FormDescription>Enter your password.</FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
 
-                <FormField
+                {/* <FormField
                   control={form.control}
                   name="phoneNumber"
                   render={({ field }) => (
@@ -141,8 +139,8 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                       <FormMessage />
                     </FormItem>
                   )}
-                />
-
+                /> */}
+                {/* 
                 <FormField
                   control={form.control}
                   name="otp"
@@ -170,7 +168,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                       <FormMessage />
                     </FormItem>
                   )}
-                />
+                /> */}
 
                 <Button type="submit" className="w-full">
                   Login
@@ -221,7 +219,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
               </div>
             </form>
           </Form>
-          
+
           <div className="relative hidden bg-muted md:block">
             <img
               src="/placeholder.svg"
@@ -231,7 +229,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
           </div>
         </CardContent>
       </Card>
-      
+
       <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
         By clicking continue, you agree to our{" "}
         <a href="#">Terms of Service</a>{" "}

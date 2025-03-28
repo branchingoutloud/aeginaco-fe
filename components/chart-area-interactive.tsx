@@ -122,6 +122,9 @@ const chartData = [
   { date: "2024-06-30", desktop: 446, mobile: 400 },
 ]
 
+/* The `const chartConfig` object is defining the configuration for the chart used in the
+`ChartAreaInteractive` component. It specifies the labels and colors for different data elements in
+the chart. */
 const chartConfig = {
   visitors: {
     label: "Visitors",
@@ -146,6 +149,8 @@ export function ChartAreaInteractive() {
     }
   }, [isMobile])
 
+  /* The `filteredData` constant is filtering the `chartData` array based on a specific time range
+  determined by the `timeRange` state variable. */
   const filteredData = chartData.filter((item) => {
     const date = new Date(item.date)
     const referenceDate = new Date("2024-06-30")
